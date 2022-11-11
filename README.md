@@ -24,7 +24,7 @@ Proyek submission untuk kelas **Belajar Fundamental Front-End Web Development Di
 
 <div align="center">
 <figure>
-    <img src ="https://github.com/nurmuhimawann/MoveeApps/blob/main/src/assets/img/moveee.png?raw=true" alt="MoveeApps">
+    <img src ="https://github.com/nurmuhimawann/MoveeApps/blob/main/src/assets/moveee.png?raw=true" alt="MoveeApps">
     <figcaption align="center"><b>Display Front-End</b></figcaption>
 </figure>
 </div>
@@ -117,7 +117,7 @@ Untuk API, saya memakai **TheMovieDB** sebagai API yang direkomendasikan oleh ti
 
 <div align="center">
 <figure>
-    <img src ="https://github.com/nurmuhimawann/MoveeApps/blob/main/src/assets/Screenshot_55.png?raw=true" alt="API Key">
+    <img src ="https://github.com/nurmuhimawann/MoveeApps/blob/main/src/assets/api-key.png?raw=true" alt="API Key">
     <figcaption align="center"><b>API KEY TheMovieDB</b></figcaption>
 </figure>
 </div>
