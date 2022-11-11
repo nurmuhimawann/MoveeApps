@@ -4,14 +4,11 @@ import '../component/search-tools.js';
 import "../component/movies.js";
 import '../component/genre.js';
 
-
 import DataSource from "../data/data-source.js";
-import DataGenre from "../data/genre-movies.json";
 
 const main = () => {
     const searchElement = document.querySelector("search-tools");
     const movieListElement = document.querySelector("movie-list");
-    const genreTags = document.getElementById("tags");
 
     // initialization render movie
     const getMovies = (keyword) => {
@@ -21,7 +18,7 @@ const main = () => {
     // search movie
     const onButtonSearchClicked = () => {
         selectedGenre = [];
-        setGenre();
+        setGenreEvent();
         if (onButtonSearchClicked) {
             searchMovie(searchElement.value);
         } else {
@@ -70,21 +67,22 @@ const main = () => {
     searchElement.clickEvent = onButtonSearchClicked;
 
     let selectedGenre = [];
-    const setGenre = () => {
-        const tags = document.querySelectorAll('tag');
-        tags.forEach((genre) => {
-            tags.addEventListener("click", () => {
+    const setGenreEvent = () => {
+        const tags = document.querySelectorAll(".tag");
+        tags.forEach(tag => {
+            tag.addEventListener("click", (e) => {
+                let genreId = e.target.id;
                 if (selectedGenre.length == 0) {
-                    selectedGenre.push(genre.id);
+                    selectedGenre.push(genreId);
                 } else {
-                    if (selectedGenre.includes(genre.id)) {
+                    if (selectedGenre.includes(genreId)) {
                         selectedGenre.forEach((id, idx) => {
-                            if (id == genre.id) {
+                            if (id == genreId) {
                                 selectedGenre.splice(idx, 1);
                             }
                         });
                     } else {
-                        selectedGenre.push(genre.id);
+                        selectedGenre.push(genreId);
                     }
                 }
                 console.log(selectedGenre);
@@ -93,7 +91,7 @@ const main = () => {
             });
         });
     };
-    setGenre();
+    setGenreEvent();
 
     const highlightSelection = () => {
         const tags = document.querySelectorAll(".tag");

@@ -31,24 +31,20 @@ class GenreMovies extends HTMLElement {
             }
             
             .tag.highlight {
-                background-color: #d63031;
+                background-color: #0d6efd;
                 color: #FFF !important;
                 font-weight: 600;
             }
         </style>
         `;
         let htmlContent = '';
-        DataGenre.genres.map((genres, idx) => {
+        DataGenre.genres.map((genres) => {
             htmlContent += `
-                <div class="tag text-center" id="${idx}">${genres.name}</div>
+                <div class="tag text-center" id="${genres.id}">${genres.name}</div>
             `;
         });
 
         this.innerHTML += htmlContent;
-        this.querySelector("#tag").addEventListener(
-            "click",
-            this._clickEvent
-        );
     }
 }
 

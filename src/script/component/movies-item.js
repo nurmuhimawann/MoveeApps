@@ -4,6 +4,10 @@ class MovieItem extends HTMLElement {
         this.render();
     }
 
+    get genreId() {
+        return this._movie.genre_ids;
+    }
+
     render() {
         this.className = "col mb-4";
         this.innerHTML = `
@@ -54,7 +58,6 @@ class MovieItem extends HTMLElement {
                             </span>
                         </div>
                     </div>
-                    <span>Genre: ${this._movie.genre_ids}</span>
                 </div>
         </div>`;
     }
