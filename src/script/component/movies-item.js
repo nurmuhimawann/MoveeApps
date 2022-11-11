@@ -8,35 +8,35 @@ class MovieItem extends HTMLElement {
         this.className = "col mb-4";
         this.innerHTML = `
         <style>
-          .card {
-            border: none;
-            background: none;
-            max-width: 12rem;
-            cursor: pointer;
-          }
+            .card {
+                border: none;
+                background: none;
+                max-width: 12rem;
+                cursor: pointer;
+            }
 
-          .card-img {
-            height: 280px;
-          }
+            .card-img {
+                height: 280px;
+            }
 
-          .card-body {
-            padding: 15px 5px;
-          }
+            .card-body {
+                padding: 15px 5px;
+            }
 
-          .card-text {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          }
+            .card-text {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-          .card-text span {
-            color: #AAB6BB !important;
-            font-weight: 400;
-          }
+            .card-text span {
+                color: #AAB6BB !important;
+                font-weight: 400;
+            }
 
-          .card-text .ratings {
-            color: #FDA400 !important;
-          }
+            .card-text .ratings {
+                color: #FDA400 !important;
+            }
         </style>
 
         <div class="card card-content" data-id="${this._movie.id}">
@@ -54,6 +54,7 @@ class MovieItem extends HTMLElement {
                             </span>
                         </div>
                     </div>
+                    <span>Genre: ${this._movie.genre_ids}</span>
                 </div>
         </div>`;
     }

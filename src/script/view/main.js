@@ -1,77 +1,17 @@
-// import '../component/movies.js';
+import '../component/title-bar.js';
+import '../component/hero-image.js';
 import '../component/search-tools.js';
-// // import axios from "axios"
-// // import '../component/search-result';
-// // import '../component/load-more';
-// import $ from 'jquery';
-// import DataSource from '../data/data-source.js';
-
-// const main = () => {
-//     const searchElement = document.querySelector("form");
-
-//     const onButtonSearchClicked = () => {
-//         searchMovie(searchElement.value);
-//     };
-
-//     const searchMovie = async (keyword) => {
-//         // loaderElement.style.display = 'block';
-
-//         try {
-//             const result = await DataSource.searchMovie(keyword);
-//             renderResult(result);
-//         } catch (message) {
-//             fallbackResult(message)
-//         }
-//     }
-
-//     // Search Movie
-//     searchElement.clickEvent = onButtonSearchClicked;
-
-
-//     // Batas
-//     const movieListElement = document.querySelector('movie-list');
-
-//     const renderResult = (results) => {
-//         movieListElement.movies = results;
-//     };
-
-//     const fallbackResult = (message) => {
-//         movieListElement.renderError(message);
-
-//         $('search-result').hide();
-//         $('load-more').hide();
-//     };
-
-//     const moviesList = async () => {
-//         try {
-//             const result = await DataSource.moviesList();
-//             renderResult(result);
-//         } catch (message) {
-//             fallbackResult(message);
-//         }
-//     };
-
-//     moviesList();
-
-// };
-
-// export default main;
-
-
-
-
-
 import "../component/movies.js";
-// import "../component/banner-list.js";
-// import "../component/header-navbar.js";
+import '../component/genre.js';
+
 
 import DataSource from "../data/data-source.js";
+import DataGenre from "../data/genre-movies.json";
 
 const main = () => {
     const searchElement = document.querySelector("search-tools");
-    // const banner = document.querySelector("banner-list");
     const movieListElement = document.querySelector("movie-list");
-    // const genreTags = document.getElementById("tags");
+    const genreTags = document.getElementById("tags");
 
     // initialization render movie
     const getMovies = (keyword) => {
@@ -80,8 +20,8 @@ const main = () => {
 
     // search movie
     const onButtonSearchClicked = () => {
-        // selectedGenre = [];
-        // setGenre();
+        selectedGenre = [];
+        setGenre();
         if (onButtonSearchClicked) {
             searchMovie(searchElement.value);
         } else {
@@ -103,49 +43,70 @@ const main = () => {
     };
     const fallbackResult = (e) => {
         movieListElement.innerHTML = `
-      <style>
-        .placeholder {
-          font-weight: lighter;
-          color: rgba(0, 0, 0, 0.5);
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-      }
-      </style>
+            <style>
+                .placeholder {
+                font-weight: lighter;
+                color: rgba(0, 0, 0, 0.5);
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            </style>
 
-      <h2 class="placeholder>${e}</h2>
-    `;
+            <h2 class="placeholder>${e}</h2>
+        `;
     };
 
-    // initialization category movie
+    // initialization genre movie
     const movieGenres = (id) => {
         DataSource.genreMovies(id).then(renderResult).catch(fallbackResult);
     };
 
-    // initialization banner
-    const setMovies = async (keyword) => {
-        try {
-            const result = await DataSource.bannerMovies(keyword);
-            let finalResult = [];
-            for (let i = 0; i < 3; i++) {
-                finalResult.push(result[Math.floor(Math.random() * result.length - 1)]);
-            }
-            console.log(finalResult);
-            banner.banners = finalResult;
-        } catch (message) {
-            banner.renderError(message);
-        }
-    };
-
     // render all movies
     getMovies("discover/movie");
-    // set banner
-    setMovies("trending");
 
     // search movie
     searchElement.clickEvent = onButtonSearchClicked;
 
+    let selectedGenre = [];
+    const setGenre = () => {
+        const tags = document.querySelectorAll('tag');
+        tags.forEach((genre) => {
+            tags.addEventListener("click", () => {
+                if (selectedGenre.length == 0) {
+                    selectedGenre.push(genre.id);
+                } else {
+                    if (selectedGenre.includes(genre.id)) {
+                        selectedGenre.forEach((id, idx) => {
+                            if (id == genre.id) {
+                                selectedGenre.splice(idx, 1);
+                            }
+                        });
+                    } else {
+                        selectedGenre.push(genre.id);
+                    }
+                }
+                console.log(selectedGenre);
+                movieGenres(selectedGenre.join(","));
+                highlightSelection();
+            });
+        });
+    };
+    setGenre();
+
+    const highlightSelection = () => {
+        const tags = document.querySelectorAll(".tag");
+        tags.forEach((tag) => {
+            tag.classList.remove("highlight");
+        });
+        if (selectedGenre.length != 0) {
+            selectedGenre.forEach((id) => {
+                const highlightedTag = document.getElementById(id);
+                highlightedTag.classList.add("highlight");
+            });
+        }
+    };
 };
 
 export default main;

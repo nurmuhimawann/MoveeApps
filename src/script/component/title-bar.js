@@ -6,7 +6,7 @@ class TitleBar extends HTMLElement {
     render() {
         this.innerHTML = `
         <div class="row mb-3">
-            <h2 class="text-black">Moveee Apps</h2>
+            <h1 class="text-black">Moveee Apps</h1>
         </div>`;
     }
 }
