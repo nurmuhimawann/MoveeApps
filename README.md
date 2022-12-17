@@ -1,3 +1,6 @@
+# Submission Belajar Fundamental Front-End Web Development
+🌀 #10. "Belajar Fundamental Front-End Web Development"
+
 <p align='center'>
   <a href="https://nodejs.org/en/">
     <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/></a>&nbsp;&nbsp;
@@ -18,7 +21,7 @@
 
 </div>
 
-# MLFE - Belajar Fundamental Front-End Web Development
+<br>
 
 Proyek submission untuk kelas **Belajar Fundamental Front-End Web Development Dicoding**.
 
