@@ -41,7 +41,7 @@ Berikut langkah-langkah untuk menginstal dan menjalankan code progam ini.
 3. Buka folder project dan jalankan perintah **npm install** pada terminal.
 4. Setelah **node-modules** terinstall, ketikkan perintah `npm run start-dev` (*development mode*)untuk mejalankan kode progam.
 5. Kemudian, buka link project melalui local browser.
-6. Atau cara kedua, anda dapat menjalankan perintah `npm run build` (*development mode*), kemudian buka progam dengan membuka file **index.html** yang tersedia pada folder `.src/dist/index.html`.
+6. Atau cara kedua, anda dapat menjalankan perintah `npm run build` (*production mode*), kemudian buka progam dengan membuka file **index.html** yang tersedia pada folder `.src/dist/index.html`.
 
 
 ## Demo Project
